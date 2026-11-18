@@ -28,8 +28,11 @@
 | 12 | 〃 `obsidian-headless` | [`skills/obsidian-skills/obsidian-headless/`](skills/obsidian-skills/obsidian-headless/) | 앱 없이 CLI(`ob`)로 볼트 동기화·퍼블리시 | obsidianmd/obsidian-skills | MIT | 2026-11-16 |
 | 13 | 〃 `defuddle` | [`skills/obsidian-skills/defuddle/`](skills/obsidian-skills/defuddle/) | 웹 페이지에서 본문만 깨끗한 마크다운으로 추출 | obsidianmd/obsidian-skills | MIT | 2026-11-16 |
 | 14 | 〃 `knap` | [`skills/obsidian-skills/knap/`](skills/obsidian-skills/knap/) | 템플릿 + JSON/CSV로 마크다운 노트 대량 생성 | obsidianmd/obsidian-skills | MIT | 2026-11-16 |
+| 15 | **systematic-debugging** (발췌 2파일) | [`skills/systematic-debugging/`](skills/systematic-debugging/) | 근본 원인 조사 없이는 수정 금지 — 4단계 디버깅·호출 스택 역추적 | [obra/superpowers](https://github.com/obra/superpowers) v7.0.2 | MIT | 2026-11-18 |
+| 16 | **ui-ux-pro-max-rules** (발췌) | [`skills/ui-ux-pro-max-rules/`](skills/ui-ux-pro-max-rules/) | UI 수치 기준(iOS 44pt·Android 48dp·웹 WCAG 24px·대비 4.5:1) + 배포 전 체크리스트 | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) v2.15.0 | MIT | 2026-11-18 |
+| 17 | **caveman** | [`skills/caveman/`](skills/caveman/) | 군더더기(인사·연결어·마무리) 제거 문체 규칙 — 사실·수치는 원형 유지 | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | Apache-2.0 (+NOTICE) | 2026-11-18 |
 
-총 **8개 출처 · 14종 스킬**. 스킬별 상세 검증 기록은 각 폴더의 `SOURCE.md`, 라이선스 전문은 [`LICENSES/`](LICENSES/)에 있습니다.
+총 **11개 출처 · 17종 스킬**. 스킬별 상세 검증 기록은 각 폴더의 `SOURCE.md`, 라이선스 전문은 [`LICENSES/`](LICENSES/)에 있습니다.
 
 ## 폴더 규칙
 
@@ -40,6 +43,9 @@ skills/<스킬명>/
 └── (첨부 문서)   # 원문이 참조하는 rules/ · references/ 등도 함께
 LICENSES/        # 재배포하는 원출처 라이선스 전문
 ```
+
+- **발췌 등록**일 때는 원문 파일을 원래 파일명 그대로 옮기고(`pro-rules.md` 등), 폴더 안내용 `SKILL.md`를 따로 둘 수 있습니다. 이때 그 `SKILL.md`는 원문이 아니므로 파일 첫머리와 `SOURCE.md`에 그 사실을 밝힙니다(예: `ui-ux-pro-max-rules/`).
+- 원본 `SKILL.md`가 별도 스크립트·데이터를 전제해 단독으로 읽히지 않으면, 그 파일은 싣지 않고 자립적으로 읽히는 문서만 발췌합니다.
 
 ## 사용 방법
 
@@ -52,3 +58,4 @@ LICENSES/        # 재배포하는 원출처 라이선스 전문
 | 날짜 | 내용 |
 |---|---|
 | 2026-11-16 | 저장소를 **AI 스킬·프롬프트 원문 창고**로 정리. prompt-master, agentic-awesome-skills 6종, obsidian-skills 7종 + README 수록. 이전 README(첫 AI 프로젝트 학습 노트)는 커밋 `ceee66d`에 그대로 남아 있습니다. |
+| 2026-11-18 | 11-18 9시 브리핑 실전 비교 시험 통과 3종 추가 — systematic-debugging(발췌), ui-ux-pro-max-rules(발췌), caveman(원문). 라이선스 4종(MIT 2 · Apache-2.0 + NOTICE 2)과 시험 결과·한계를 각 `SOURCE.md`에 기록. |
