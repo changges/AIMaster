@@ -31,8 +31,21 @@
 | 15 | **systematic-debugging** (발췌 2파일) | [`skills/systematic-debugging/`](skills/systematic-debugging/) | 근본 원인 조사 없이는 수정 금지 — 4단계 디버깅·호출 스택 역추적 | [obra/superpowers](https://github.com/obra/superpowers) v7.0.2 | MIT | 2026-11-18 |
 | 16 | **ui-ux-pro-max-rules** (발췌) | [`skills/ui-ux-pro-max-rules/`](skills/ui-ux-pro-max-rules/) | UI 수치 기준(iOS 44pt·Android 48dp·웹 WCAG 24px·대비 4.5:1) + 배포 전 체크리스트 | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) v2.15.0 | MIT | 2026-11-18 |
 | 17 | **caveman** | [`skills/caveman/`](skills/caveman/) | 군더더기(인사·연결어·마무리) 제거 문체 규칙 — 사실·수치는 원형 유지 | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | Apache-2.0 (+NOTICE) | 2026-11-18 |
+| 18 | **frontend-design** | [`skills/frontend-design/`](skills/frontend-design/) | AI 클리셰를 피하는 디자인 방향 — 색 토큰·타이포·레이아웃 2패스 계획과 카피 규칙 | [anthropics/skills](https://github.com/anthropics/skills) (공식) | Apache-2.0 | 2026-11-19 |
+| 19 | **last30days** (원문 1파일 · 실행 코드 제외) | [`skills/last30days/`](skills/last30days/) | 최근 30일 여론 리서치의 출력 계약 LAW 1~11 · 제출 전 자기 점검 · 소스별 무료/유료 구분 | [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) v4.3.2 | MIT | 2026-11-19 |
+| 20 | **self-improving-agent** | [`skills/self-improving-agent/`](skills/self-improving-agent/) | `MEMORY.md` 자동 학습을 `CLAUDE.md`·`.claude/rules/`·스킬로 승격하는 큐레이션 워크플로 | [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) v1.0.0 | MIT | 2026-11-19 |
 
-총 **11개 출처 · 17종 스킬**. 스킬별 상세 검증 기록은 각 폴더의 `SOURCE.md`, 라이선스 전문은 [`LICENSES/`](LICENSES/)에 있습니다.
+총 **14개 출처 · 20종 스킬**. 스킬별 상세 검증 기록은 각 폴더의 `SOURCE.md`, 라이선스 전문은 [`LICENSES/`](LICENSES/)에 있습니다.
+
+## ⚠️ 주의사항 (2026-11-19 등록 3종)
+
+프롬프트 본문에는 사용 내용만 두고, 검토 범위와 제한은 아래에 따로 적습니다.
+
+- **frontend-design** — ⚠️ 주의사항: 1차 검토는 `skills/frontend-design/` 폴더 내 지침·`LICENSE.txt` 범위만 확인했으며(전체 저장소 아님), 디자인 가이드이므로 실제 UI 컴포넌트 코드는 별도 구현이 필요합니다.
+- **last30days** — ⚠️ 주의사항: 240KB 파이썬 엔진(`last30days.py`) 및 `scripts/`(`box_chrome_login.py` 브라우저 쿠키 읽기 경로 포함)는 코드 감사 전 실행 금지이며, 유료 API(ScrapeCreators 등) 가입 권유·X/YouTube/TikTok 등 유료·로그인 확장 소스는 사용 범위에서 제외하고 무료 소스·프롬프트 워크플로만 참고하세요.
+- **self-improving-agent** — ⚠️ 주의사항: 윈도우 클로드 코드(v2.1.32+) 자동 메모리 환경을 전제로 하며, 410개+ 모노레포 전체 클론 금지 및 `hooks/`·`settings.json` 등 보조 스크립트 실행 전 코드 추가 확인이 필요하므로 당장은 `SKILL.md` 프롬프트·워크플로 발췌만 참고하세요.
+
+공통: 세 종 모두 **1차 안전 확인**(확인한 범위에서 의심 동작 0건)이며, 저장소 전체 보안 감사나 코드 실행 검증을 마쳤다는 뜻이 아닙니다. "100% 안전"으로 읽지 마세요.
 
 ## 폴더 규칙
 
@@ -59,3 +72,4 @@ LICENSES/        # 재배포하는 원출처 라이선스 전문
 |---|---|
 | 2026-11-16 | 저장소를 **AI 스킬·프롬프트 원문 창고**로 정리. prompt-master, agentic-awesome-skills 6종, obsidian-skills 7종 + README 수록. 이전 README(첫 AI 프로젝트 학습 노트)는 커밋 `ceee66d`에 그대로 남아 있습니다. |
 | 2026-11-18 | 11-18 9시 브리핑 실전 비교 시험 통과 3종 추가 — systematic-debugging(발췌), ui-ux-pro-max-rules(발췌), caveman(원문). 라이선스 4종(MIT 2 · Apache-2.0 + NOTICE 2)과 시험 결과·한계를 각 `SOURCE.md`에 기록. |
+| 2026-11-19 | 11-19 9시 브리핑 3종 추가 — frontend-design(원문, Apache-2.0 라이선스 전문 동봉), last30days(`SKILL.md` 원문 1파일만 · 엔진·`references/`·쿠키 스크립트 제외), self-improving-agent(`SKILL.md` 원문 1파일만 · `hooks/`·`settings.json` 제외). 라이선스 3종(MIT 2 · Apache-2.0 1) 추가, 창현 님 지시(텔레그램 1308번)대로 **주의사항을 본문과 섞지 않고 아래에 따로** 적었습니다. |
