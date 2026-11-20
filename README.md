@@ -34,8 +34,21 @@
 | 18 | **frontend-design** | [`skills/frontend-design/`](skills/frontend-design/) | AI 클리셰를 피하는 디자인 방향 — 색 토큰·타이포·레이아웃 2패스 계획과 카피 규칙 | [anthropics/skills](https://github.com/anthropics/skills) (공식) | Apache-2.0 | 2026-11-19 |
 | 19 | **last30days** (원문 1파일 · 실행 코드 제외) | [`skills/last30days/`](skills/last30days/) | 최근 30일 여론 리서치의 출력 계약 LAW 1~11 · 제출 전 자기 점검 · 소스별 무료/유료 구분 | [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) v4.3.2 | MIT | 2026-11-19 |
 | 20 | **self-improving-agent** | [`skills/self-improving-agent/`](skills/self-improving-agent/) | `MEMORY.md` 자동 학습을 `CLAUDE.md`·`.claude/rules/`·스킬로 승격하는 큐레이션 워크플로 | [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) v1.0.0 | MIT | 2026-11-19 |
+| 21 | **webapp-testing** (원문 1파일 · 스크립트 제외) | [`skills/webapp-testing/`](skills/webapp-testing/) | 로컬 웹앱을 Playwright로 띄워 화면·셀렉터·콘솔 로그를 직접 확인 | [anthropics/skills](https://github.com/anthropics/skills) (공식) | Apache-2.0 | 2026-11-20 |
+| 22 | **unslop** | [`skills/unslop/`](skills/unslop/) | 바이브코딩 UI의 'AI 티'를 9패스(간격→색→아이콘→카피→타이포→레이아웃→디테일→비주얼→모션)로 걷어내는 디자인 패스 | [heydamir/unslop](https://github.com/heydamir/unslop) — **저작자 Damir Sokolovsky [@heydamir]** | CC-BY-4.0 | 2026-11-20 |
+| 23 | **cartoon-3d-short** (저장소: Claude Animated Shorts) | [`skills/cartoon-3d-short/`](skills/cartoon-3d-short/) | three.js+Remotion 로컬 렌더로 55~70초 세로 스토리 쇼츠를 만드는 11단계 파이프라인 | [mromidev/claude-animated-shorts](https://github.com/mromidev/claude-animated-shorts) | MIT | 2026-11-20 |
 
-총 **14개 출처 · 20종 스킬**. 스킬별 상세 검증 기록은 각 폴더의 `SOURCE.md`, 라이선스 전문은 [`LICENSES/`](LICENSES/)에 있습니다.
+총 **16개 출처 · 23종 스킬**. 스킬별 상세 검증 기록은 각 폴더의 `SOURCE.md`, 라이선스 전문은 [`LICENSES/`](LICENSES/)에 있습니다.
+
+## ⚠️ 주의사항 (2026-11-20 등록 3종)
+
+프롬프트 본문에는 사용 내용만 두고, 검토 범위와 제한은 아래에 따로 적습니다.
+
+- **webapp-testing** — ⚠️ 주의사항: `with_server.py`가 `--server` 문자열을 `shell=True`로 실행하므로 **직접 작성한 신뢰하는 프로젝트에서만** 사용하고, 남이 준 명령 문자열을 그대로 넣지 마세요. Python Playwright(`pip install playwright` + `playwright install chromium`)가 필요하며, 로컬 브라우저 자동화라 **아이폰·애플워치 실기기 테스트를 대체할 수 없습니다**. 1차 안전 확인(읽은 범위 내 의심 동작 0건)만 했고 전체 코드 감사·실행 검증은 하지 않았습니다.
+- **unslop** — ⚠️ 주의사항: **CC BY 4.0**이므로 복제·개작·배포 시 원저작자 **Damir Sokolovsky([@heydamir])** 표기와 라이선스 링크를 반드시 남기고, 스토리 영상 결과물에는 `unslop by @heydamir` 한 줄을 넣어야 합니다. `snapshot.mjs`로 캡처할 때 **로그인한 화면·비공개 페이지·타사 사이트는 저장하지 마세요**(쿠키가 실린 세션 내용이 파일로 남습니다). 원문 8단계의 **이미지 생성 도구 사용(유료 API 가능)** 부분은 사용 범위에서 제외하고, 코드로 만들 수 있는 비주얼·프롬프트 작성까지만 참고하세요. 1차 안전 확인(SKILL.md·snapshot.mjs 읽은 범위 내 의심 동작 0건)만 했고, `story.mjs` 포함 전체 코드 감사·실행 검증은 하지 않았습니다.
+- **cartoon-3d-short** — ⚠️ 주의사항: ASMR 영상용이 아니라 **스토리 쇼츠(55~70초·내레이션·음성 별도 준비)** 후보이며, 원출처 `templates/`·`scripts/`를 함께 받아야만 동작합니다. Remotion은 번들마다 `public/`(약 1.3GB)를 임시 폴더로 복사하므로 **디스크 여유를 확인하고 `TEMP`/`TMP`를 큰 드라이브로 지정**해야 하며(원저작자도 60GB 이상 차서 렌더가 죽었다고 기록), 2K 렌더는 약 4fps로 67초 영상에 **10분 내외** 걸립니다. `references/`의 참고 프레임·콘택트시트는 **스타일 학습용**이므로 그대로 복사·업로드·공개하지 말고, 스토리·캐릭터·음성은 반드시 직접 만드세요. 1차 안전 확인(SKILL.md·README 읽은 범위 내 의심 동작 0건)만 했고 전체 코드 감사·실행 검증은 하지 않았습니다.
+
+공통: 세 종 모두 **1차 안전 확인**(확인한 범위에서 의심 동작 0건)이며, 저장소 전체 보안 감사나 코드 실행 검증을 마쳤다는 뜻이 아닙니다. "100% 안전"으로 읽지 마세요.
 
 ## ⚠️ 주의사항 (2026-11-19 등록 3종)
 
@@ -75,3 +88,4 @@ LICENSES/        # 재배포하는 원출처 라이선스 전문
 | 2026-11-16 | 저장소를 **AI 스킬·프롬프트 원문 창고**로 정리. prompt-master, agentic-awesome-skills 6종, obsidian-skills 7종 + README 수록. 이전 README(첫 AI 프로젝트 학습 노트)는 커밋 `ceee66d`에 그대로 남아 있습니다. |
 | 2026-11-18 | 11-18 9시 브리핑 실전 비교 시험 통과 3종 추가 — systematic-debugging(발췌), ui-ux-pro-max-rules(발췌), caveman(원문). 라이선스 4종(MIT 2 · Apache-2.0 + NOTICE 2)과 시험 결과·한계를 각 `SOURCE.md`에 기록. |
 | 2026-11-19 | 11-19 9시 브리핑 3종 추가 — frontend-design(원문, Apache-2.0 라이선스 전문 동봉), last30days(`SKILL.md` 원문 1파일만 · 엔진·`references/`·쿠키 스크립트 제외), self-improving-agent(`SKILL.md` 원문 1파일만 · `hooks/`·`settings.json` 제외). 라이선스 3종(MIT 2 · Apache-2.0 1) 추가, 창현 님 지시(텔레그램 1308번)대로 **주의사항을 본문과 섞지 않고 아래에 따로** 적었습니다. |
+| 2026-11-20 | 11-20 9시 브리핑 3종 추가 — webapp-testing(원문, Apache-2.0 라이선스 전문 동봉 · `scripts/`·`examples/` 제외), unslop(`SKILL.md` 원문, **CC BY 4.0 저작자 표기** 전문 동봉 · `references/`·`scripts/` 제외), cartoon-3d-short(`SKILL.md` 원문, MIT · `templates/`·`references/` 제외). 라이선스 3종(Apache-2.0 · CC-BY-4.0 · MIT) 추가. |
