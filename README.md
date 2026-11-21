@@ -37,8 +37,21 @@
 | 21 | **webapp-testing** (원문 1파일 · 스크립트 제외) | [`skills/webapp-testing/`](skills/webapp-testing/) | 로컬 웹앱을 Playwright로 띄워 화면·셀렉터·콘솔 로그를 직접 확인 | [anthropics/skills](https://github.com/anthropics/skills) (공식) | Apache-2.0 | 2026-11-20 |
 | 22 | **unslop** | [`skills/unslop/`](skills/unslop/) | 바이브코딩 UI의 'AI 티'를 9패스(간격→색→아이콘→카피→타이포→레이아웃→디테일→비주얼→모션)로 걷어내는 디자인 패스 | [heydamir/unslop](https://github.com/heydamir/unslop) — **저작자 Damir Sokolovsky [@heydamir]** | CC-BY-4.0 | 2026-11-20 |
 | 23 | **cartoon-3d-short** (저장소: Claude Animated Shorts) | [`skills/cartoon-3d-short/`](skills/cartoon-3d-short/) | three.js+Remotion 로컬 렌더로 55~70초 세로 스토리 쇼츠를 만드는 11단계 파이프라인 | [mromidev/claude-animated-shorts](https://github.com/mromidev/claude-animated-shorts) | MIT | 2026-11-20 |
+| 24 | **humanizer** | [`skills/humanizer/`](skills/humanizer/) | AI 문체 패턴(대조·한 줄 마무리·3단 나열·과장·볼드 라벨)을 지우고 사람이 쓴 글로 다듬기 | [blader/humanizer](https://github.com/blader/humanizer) v4.0.0 | MIT | 2026-11-21 |
+| 25 | **addy-agent-skills** (**26종** 한 팩) | [`skills/addy-agent-skills/`](skills/addy-agent-skills/) | 기획→스펙→구현→테스트→리뷰→출시 수명주기 25종 + 메타 1종 (코드 단순화·디버깅·보안·접근성·성능 등) | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) 0.6.17 | MIT | 2026-11-21 |
+| 26 | **archify** (제품용 스킬) | [`skills/archify/`](skills/archify/) | 아이디어·계획·코드를 10종 인터랙티브 HTML 다이어그램·한 장 설명 페이지로 만들기 | [tt-a1i/archify](https://github.com/tt-a1i/archify) v3.2 | Apache-2.0 (+NOTICE) | 2026-11-21 |
 
-총 **16개 출처 · 23종 스킬**. 스킬별 상세 검증 기록은 각 폴더의 `SOURCE.md`, 라이선스 전문은 [`LICENSES/`](LICENSES/)에 있습니다.
+총 **51종 스킬**. 스킬별 상세 검증 기록은 각 폴더의 `SOURCE.md`, 라이선스 전문은 [`LICENSES/`](LICENSES/)에 있습니다.
+
+## ⚠️ 주의사항 (2026-11-21 등록 3종 — humanizer · addy-agent-skills · archify)
+
+프롬프트 본문에는 사용 내용만 두고, 검토 범위와 제한은 아래에 따로 적습니다.
+
+- **humanizer** — ⚠️ 주의사항: "16/16 선호" 평가는 **저장소 자체의 주장**([#229](https://github.com/blader/humanizer/issues/229))이며 저자가 직접 밝혔듯 **AI 탐지기를 통과시키려는 스킬이 아닙니다**(탐지기는 여전히 대부분의 결과물을 AI로 표시). 규칙이 영문 산문 기준이라 **한국어 문장은 실전 A/B 미실시**이고, 재작성 뒤 수치·고유명사·인용이 바뀌지 않았는지 사람이 다시 확인해야 합니다. 1차 정적/안전 확인(`SKILL.md` 504줄 + `scripts/validate-package.py` 154줄, 외부 통신 0건)만 했고 실전 성능은 미검증입니다.
+- **addy-agent-skills** — ⚠️ 주의사항: 단일 스킬을 `npx`로 설치하면 `references/` 폴더가 빠지는 보고가 있었습니다([#361 "npx packs only skills/"](https://github.com/addyosmani/agent-skills/issues/361), 2026-08-03 `completed`로 종료) — 설치 후 `references/`가 함께 받아졌는지 확인하세요. 저장소의 `hooks/` 셸 스크립트(세션 시작·파일 저장 시 실행되는 훅)는 **별도 검토 전 자동 적용 금지**이고, 리팩토링 뒤에는 **테스트로 동작 보존을 확인**해야 합니다. 원문이 `../../references/`를 참조하므로 공용 문서 7개를 `skills/addy-agent-skills/references/`에 함께 넣어 두었습니다. 1차 확인 완료(26종 `SKILL.md` + 참조 문서 13개, 외부 요청·위험 명령 0건)이며 26종의 실전 성능은 **미검증**입니다.
+- **archify** — ⚠️ 주의사항: Apache-2.0 **오픈소스 코어와 제3자 유료 서비스는 별개**입니다 — README의 유료 AI API 중계 서비스 스폰서·제휴 링크(가입·결제는 각 사업자와의 별개 결정)와 무관하게 스킬 자체는 무료·로컬 렌더입니다. 설치가 **원격 `npx` 경로**(`npx -y skills@latest add https://archify.si …`)이고, `finalize`/`deliver`마다 고정 주소로 **업데이트 확인 GET 1회**가 나갑니다(끄기: `ARCHIFY_UPDATE_CHECK_DISABLED=1`). `SKILL.md` 단독으로는 실행되지 않고 원출처의 `bin/archify.mjs`·`schemas/`·`references/`가 필요합니다. 수록한 것은 제품용 `archify` 스킬이며 저장소 유지보수용 `archify-review`는 넣지 않았습니다. 1차 확인 완료·**실전 HTML 생성 테스트 미실시**입니다.
+
+공통: 세 종 모두 **1차 안전 확인**(확인한 범위에서 의심 동작 0건)이며, 저장소 전체 보안 감사나 코드 실행 검증을 마쳤다는 뜻이 아닙니다. "100% 안전"으로 읽지 마세요.
 
 ## ⚠️ 주의사항 (2026-11-20 등록 3종)
 
@@ -89,3 +102,4 @@ LICENSES/        # 재배포하는 원출처 라이선스 전문
 | 2026-11-18 | 11-18 9시 브리핑 실전 비교 시험 통과 3종 추가 — systematic-debugging(발췌), ui-ux-pro-max-rules(발췌), caveman(원문). 라이선스 4종(MIT 2 · Apache-2.0 + NOTICE 2)과 시험 결과·한계를 각 `SOURCE.md`에 기록. |
 | 2026-11-19 | 11-19 9시 브리핑 3종 추가 — frontend-design(원문, Apache-2.0 라이선스 전문 동봉), last30days(`SKILL.md` 원문 1파일만 · 엔진·`references/`·쿠키 스크립트 제외), self-improving-agent(`SKILL.md` 원문 1파일만 · `hooks/`·`settings.json` 제외). 라이선스 3종(MIT 2 · Apache-2.0 1) 추가, 창현 님 지시(텔레그램 1308번)대로 **주의사항을 본문과 섞지 않고 아래에 따로** 적었습니다. |
 | 2026-11-20 | 11-20 9시 브리핑 3종 추가 — webapp-testing(원문, Apache-2.0 라이선스 전문 동봉 · `scripts/`·`examples/` 제외), unslop(`SKILL.md` 원문, **CC BY 4.0 저작자 표기** 전문 동봉 · `references/`·`scripts/` 제외), cartoon-3d-short(`SKILL.md` 원문, MIT · `templates/`·`references/` 제외). 라이선스 3종(Apache-2.0 · CC-BY-4.0 · MIT) 추가. |
+| 2026-11-21 | 11-21 9시 브리핑 3종 추가 — humanizer(`SKILL.md` 504줄 원문, MIT), addy-agent-skills(**26종 `SKILL.md` 전부 + 참조 문서 13개** 원문, MIT · `hooks/`·`scripts/`·`commands/` 제외 · 폴더 안내용 `INDEX.md`), archify(제품용 `archify/SKILL.md` 137줄 원문, Apache-2.0 · NOTICE·LICENSE-MIT 동봉 · `bin/`·`schemas/`·`references/` 제외). 라이선스 5파일(MIT 2 · Apache-2.0 1 · NOTICE 1 · LICENSE-MIT 1) 추가. |
